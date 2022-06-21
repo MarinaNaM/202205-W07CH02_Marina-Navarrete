@@ -1,0 +1,17 @@
+{
+    "thingsIKnow": [
+        {
+            "id": 1,
+            "title": "React",
+            "responsible": "Marina",
+            "happiness": false
+        },
+        {
+            "id": 2,
+            "title": "Angular",
+            "responsible": "Marina",
+            "happiness": true
+        },
+        { "id": 3, "title": "CSS", "responsible": "Marina", "happiness": true }
+    ]
+}
