@@ -81,8 +81,12 @@ describe('Given the addThings', () => {
     });
 });
 
-// describe('Given the updateThings', () => {
-//     describe('When we call it', () => {
-//         test('Then it should update a thing I know', () => {});
-//     });
-// });
+describe('Given the updateThings', () => {
+    describe('When we call it', () => {
+        test('Then it should update a thing I know', async () => {
+            fs.readFile = jest.fn().mockResolvedValue(mockDataFile);
+            await c.updateThings(req as Request, resp as Response);
+            expect(resp.end).toHaveBeenCalled();
+        });
+    });
+});
