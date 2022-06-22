@@ -9,7 +9,7 @@ type dbThings = {
     thingsIKnow: Array<iThingsIKnow>;
 };
 
-export const getController = async (
+export const getAllController = async (
     req: express.Request,
     resp: express.Response
 ) => {
@@ -20,7 +20,7 @@ export const getController = async (
     resp.end(things);
 };
 
-export function getThing(req: express.Request, resp: express.Response) {
+export function getController(req: express.Request, resp: express.Response) {
     resp.setHeader('Content-type', 'application/json');
     fs.readFile(dataFile, { encoding: 'utf-8' }).then((things) => {
         const result = (JSON.parse(things) as dbThings).thingsIKnow.find(
