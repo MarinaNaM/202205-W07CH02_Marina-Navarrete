@@ -76,7 +76,7 @@ export function updateThings(req: express.Request, resp: express.Response) {
 export function deleteThing(req: express.Request, resp: express.Response) {
     fs.readFile(dataFile, { encoding: 'utf-8' }).then((things) => {
         const parse = JSON.parse(things) as dbThings;
-        const prevLength = things.length;
+        const prevLength = parse.thingsIKnow.length;
         parse.thingsIKnow = parse.thingsIKnow.filter(
             (thing) => thing.id !== +req.params.id
         );
@@ -84,7 +84,7 @@ export function deleteThing(req: express.Request, resp: express.Response) {
             encoding: 'utf-8',
         }).then();
 
-        resp.status(prevLength === things.length ? 404 : 202);
+        resp.status(prevLength === parse.thingsIKnow.length ? 404 : 202);
         resp.end(JSON.stringify({}));
     });
 }

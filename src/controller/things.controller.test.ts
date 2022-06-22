@@ -90,3 +90,22 @@ describe('Given the updateThings', () => {
         });
     });
 });
+
+describe('Given the deleteThings', () => {
+    describe('When we call it', () => {
+        test('Then it should delete a thing I know', async () => {
+            fs.readFile = jest.fn().mockResolvedValue(mockDataFile);
+            await c.deleteThing(req as Request, resp as Response);
+            expect(resp.end).toHaveBeenCalled();
+            expect(resp.status).toHaveBeenCalledWith(202);
+        });
+    });
+    describe('When we call it', () => {
+        test('Then it should delete a thing I know', async () => {
+            req = { params: { id: '77' } };
+            fs.readFile = jest.fn().mockResolvedValue(mockDataFile);
+            await c.deleteThing(req as Request, resp as Response);
+            expect(resp.status).toHaveBeenCalledWith(404);
+        });
+    });
+});
